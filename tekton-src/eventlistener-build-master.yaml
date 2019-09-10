@@ -1,0 +1,70 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: pipeline-template
+  namespace: tekton-pipelines
+spec:
+  params:
+    - name: gitrevision
+      description: The git revision
+      default: master
+    - name: gitrepositoryurl
+      description: The git repository url
+    - name: namespace
+      description: The namespace to create the resources
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineResource
+      metadata:
+        name: git-source-$(uid)
+        namespace: $(params.namespace)
+        labels:
+          triggertemplated: "true"
+      spec:
+        type: git
+        params:
+        - name: revision
+          value: $(params.gitrevision)
+        - name: url
+          value: $(params.gitrepositoryurl)
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineRun
+      metadata:
+        generateName: simple-pipeline-run
+        namespace: $(params.namespace)
+        labels:
+          triggertemplated: "true"
+      spec:
+        pipelineRef:
+            name: simple-pipeline
+        resources:
+        - name: git-source
+          resourceRef:
+            name: git-source-$(uid)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: pipeline-binding
+  namespace: tekton-pipelines
+spec:
+  params:
+    - name: gitrevision
+      value: master
+    - name: gitrepositoryurl
+      value: $(event.repository.url)
+    - name: namespace
+      value: tekton-pipelines
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: listener
+  namespace: tekton-pipelines
+spec:
+  serviceAccountName: default
+  triggers:
+    - binding:
+        name: pipeline-binding
+      template:
+        name: pipeline-template
