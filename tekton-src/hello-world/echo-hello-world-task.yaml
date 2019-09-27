@@ -9,4 +9,4 @@ spec:
       command:
         - echo
       args:
-        - "hello world 2"
+        - "hello world 3"
