@@ -6,9 +6,8 @@ spec:
   steps:
     - name: echo
       image: ubuntu
-      command: ["/bin/bash", "-c"]
+      command: ["/bin/sh", "-c"]
       args:
-        - ls -al;
-          git clone https://github.com/skaegi/tekton-example;
-          ls -al;
+        - echo starting;
+          ls -la;
       
