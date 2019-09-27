@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: buildpack-pipeline
+spec:
+  params:
+    - name: message
+      default: default pipeline message
+  tasks:
+    - name: buildpack-with-a-task
+      taskRef:
+        name: buildpack-task
