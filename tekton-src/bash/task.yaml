@@ -10,5 +10,5 @@ spec:
       args:
         - ls -al;
           git clone https://github.com/skaegi/tekton-example;
-          ls -al
+          ls -al;
       
