@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: bash-task
+spec:
+  steps:
+    - name: echo
+      image: ubuntu
+      command:
+        - "bash -c"
+      args: |
+        ls -al
+        git clone https://github.com/skaegi/tekton-example
+        ls -al
+      
