@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: ibmcloud-pipeline
+spec:
+  params:
+    - name: message
+      default: default pipeline message
+  tasks:
+    - name: ibmcloud-with-a-task
+      taskRef:
+        name: ibmcloud-task
