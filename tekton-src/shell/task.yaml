@@ -10,7 +10,4 @@ spec:
       args:
         - echo starting;
           ls -la;
-          git clone;
-          https://github.com/skaegi/tekton-example;
-          ls -la;
       
