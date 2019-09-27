@@ -1,0 +1,46 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: echo-helloworld-template
+spec:
+  params:
+    - name: message
+      description: The message to print
+      default: This is the default message
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineRun
+      metadata:
+        generateName: echo-hello-world
+        labels:
+          triggertemplated: "true"
+          generatedBy: "triggers-example"
+      spec:
+        pipelineRef:
+            name: echo-hello-world-pipeline
+        params:
+        - name: message
+          value: $(params.message)
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: echo-helloworld-binding
+spec:
+  params:
+    - name: message
+      value: binding message
+---
+apiVersion: tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: echo-helloworld-listener
+spec:
+  triggers:
+    - binding:
+        name: echo-helloworld-binding
+      template:
+        name: echo-helloworld-template
+      params:
+        - name: message-l
+          value: Hello from the Manual Triggers EventListener!

@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: echo-hello-world-pipeline
+spec:
+  params:
+    - name: message
+      default: default pipeline message
+  tasks:
+    - name: echo-hello-world-with-a-task
+      taskRef:
+        name: echo-hello-world
