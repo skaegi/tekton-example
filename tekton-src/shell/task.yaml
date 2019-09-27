@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: bash-task
+  name: shell-task
 spec:
   steps:
     - name: echo
@@ -9,5 +9,8 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - echo starting;
+          ls -la;
+          git clone;
+          https://github.com/skaegi/tekton-example;
           ls -la;
       

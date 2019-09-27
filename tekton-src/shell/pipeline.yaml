@@ -1,12 +1,12 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: bash-pipeline
+  name: shell-pipeline
 spec:
   params:
     - name: message
       default: default pipeline message
   tasks:
-    - name: bash-with-a-task
+    - name: shell-with-a-task
       taskRef:
-        name: bash-task
+        name: shell-task

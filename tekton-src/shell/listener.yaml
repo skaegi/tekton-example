@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: bash-template
+  name: shell-template
 spec:
   params:
     - name: message
@@ -11,13 +11,13 @@ spec:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
       metadata:
-        generateName: bash
+        generateName: shell-
         labels:
           triggertemplated: "true"
           generatedBy: "triggers-example"
       spec:
         pipelineRef:
-            name: bash-pipeline
+            name: shell-pipeline
         params:
         - name: message
           value: $(params.message)
@@ -25,7 +25,7 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: bash-binding
+  name: shell-binding
 spec:
   params:
     - name: message
@@ -34,13 +34,13 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: bash-listener
+  name: shell-listener
 spec:
   triggers:
     - binding:
-        name: bash-binding
+        name: shell-binding
       template:
-        name: bash-template
+        name: shell-template
       params:
         - name: message-l
           value: Hello from the Manual Triggers EventListener!
