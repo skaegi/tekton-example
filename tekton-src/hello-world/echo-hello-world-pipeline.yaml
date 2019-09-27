@@ -9,4 +9,4 @@ spec:
   tasks:
     - name: echo-hello-world-with-a-task
       taskRef:
-        name: echo-hello-world
+        name: echo-hello-world-task
