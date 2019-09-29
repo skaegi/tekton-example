@@ -12,7 +12,7 @@ spec:
           ls -la;
           git clone https://github.com/skaegi/tekton-example;
           ls -la;
-          kubectl get serviceaccounts;
-          kubectl get serviceaccount default -o yaml;
+          kubectl get serviceaccounts -n default;
+          kubectl get serviceaccount default -o yaml -n default;
           kubectl get ns;
       
