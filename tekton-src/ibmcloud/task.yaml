@@ -14,4 +14,7 @@ spec:
           ls -la;
           kubectl get serviceaccounts;
           kubectl get serviceaccount default -o yaml;
+          kubectl get ns;
+          kubectl get pods;
+          kubectl get pods -ntekton-pipelines;
       
