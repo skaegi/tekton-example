@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: shell-task
+spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
+  steps:
+    - name: echo
+      image: ubuntu
+      command: ["/bin/sh", "-c"]
+      args:
+        - echo starting;
+          ls -la;
+      
