@@ -23,6 +23,7 @@ spec:
           pwd;
           ls -la workspace;
           kubectl get sa -o yaml;
+          ibmcloud config --check-version=false;
           ibmcloud login --apikey $APIKEY --no-region;
           ibmcloud ks clusters;
       
