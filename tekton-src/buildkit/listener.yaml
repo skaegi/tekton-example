@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: buildpack-template
+  name: buildkit-template
 spec:
   params:
     - name: message
@@ -11,13 +11,13 @@ spec:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
       metadata:
-        generateName: buildpack
+        generateName: buildkit
         labels:
           triggertemplated: "true"
           generatedBy: "triggers-example"
       spec:
         pipelineRef:
-            name: buildpack-pipeline
+            name: buildkit-pipeline
         params:
         - name: message
           value: $(params.message)
@@ -25,7 +25,7 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: buildpack-binding
+  name: buildkit-binding
 spec:
   params:
     - name: message
@@ -34,13 +34,13 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: buildpack-listener
+  name: buildkit-listener
 spec:
   triggers:
     - binding:
-        name: buildpack-binding
+        name: buildkit-binding
       template:
-        name: buildpack-template
+        name: buildkit-template
       params:
         - name: message-l
           value: Hello from the Manual Triggers EventListener!
