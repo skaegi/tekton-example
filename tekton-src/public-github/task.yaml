@@ -25,5 +25,6 @@ spec:
           kubectl get sa -o yaml;
           ibmcloud config --check-version=false;
           ibmcloud login --apikey $APIKEY --no-region;
+          ibmcloud plugin list;
           ibmcloud ks clusters;
       
