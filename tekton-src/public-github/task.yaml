@@ -26,5 +26,6 @@ spec:
           ibmcloud config --check-version=false;
           ibmcloud login --apikey $APIKEY --no-region;
           ibmcloud plugin list;
+          ibmcloud plugin repo-plugins;
           ibmcloud ks clusters;
       
