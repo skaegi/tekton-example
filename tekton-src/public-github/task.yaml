@@ -16,5 +16,4 @@ spec:
           ls -la;
           pwd;
           ls -la workspace;
-          kubectl get all;
       
