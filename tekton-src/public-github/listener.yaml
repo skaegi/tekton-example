@@ -87,4 +87,4 @@ spec:
         name: shell-template
       params:
         - name: gitrepositoryurl
-          value: https://github.com/open-toolchain/hello-containers
+          value: https://github.com/skaegi/hello-containers

@@ -9,7 +9,7 @@ spec:
         type: git
         targetPath: .
   steps:
-    - name: echo
+    - name: pre-check
       image: ibmcom/ibm-cloud-developer-tools-amd64
       env:
       - name: APIKEY
@@ -19,16 +19,8 @@ spec:
             key: apikey
       command: ["/bin/sh", "-c"]
       args:
-        - echo starting;
-          ls -la;
-          pwd;
-          ls -la workspace;
-          kubectl get sa -o yaml;
-          ibmcloud config --check-version=false;
+        - ibmcloud config --check-version=false;
           ibmcloud login --apikey $APIKEY --no-region;
-          ibmcloud plugin list;
-          ibmcloud plugin repo-plugins;
-          ibmcloud plugin install kubernetes-service;
           ibmcloud plugin install container-registry;
-          ibmcloud ks clusters;
+          source pre-build-check.sh
       
