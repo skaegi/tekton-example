@@ -10,6 +10,12 @@ spec:
   steps:
     - name: echo
       image: ibmcom/ibm-cloud-developer-tools-amd64
+      env:
+      - name: APIKEY
+        valueFrom:
+          secretKeyRef:
+            name: ibmcloud-creds
+            key: apikey
       command: ["/bin/sh", "-c"]
       args:
         - echo starting;
@@ -17,4 +23,5 @@ spec:
           pwd;
           ls -la workspace;
           kubectl get sa -o yaml;
+          echo $apikey
       

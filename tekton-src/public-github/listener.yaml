@@ -16,6 +16,13 @@ spec:
     - apiVersion: v1
       kind: Secret
       metadata:
+        name: ibmcloud-creds
+      type: Opaque
+      stringData:
+        apikey: $(params.apikey)
+    - apiVersion: v1
+      kind: Secret
+      metadata:
         name: git-token
         annotations:
           tekton.dev/git-0: https://github.com # Described below
