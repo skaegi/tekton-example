@@ -23,5 +23,5 @@ spec:
           pwd;
           ls -la workspace;
           kubectl get sa -o yaml;
-          ibmcloud login --apikey $APIKEY;
+          ibmcloud login --apikey $APIKEY --check-version=false --no-region;
       
