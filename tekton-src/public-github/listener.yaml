@@ -16,7 +16,7 @@ spec:
     - apiVersion: v1
       kind: Secret
       metadata:
-        name: github-token
+        name: git-token
         annotations:
           tekton.dev/git-0: https://github.com # Described below
       type: kubernetes.io/basic-auth
@@ -26,9 +26,9 @@ spec:
     - apiVersion: v1
       kind: ServiceAccount
       metadata:
-        name: default
+        name: git-build
       secrets:
-        - name: github-token
+        - name: git-token
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineResource
       metadata:
