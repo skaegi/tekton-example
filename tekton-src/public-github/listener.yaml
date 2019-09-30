@@ -9,6 +9,7 @@ spec:
       default: master
     - name: gitrepositoryurl
       description: The git repository url
+      default: https://github.com/open-toolchain/hello-containers
     - name: message
       description: The message to print
       default: This is the default message
@@ -21,9 +22,9 @@ spec:
         type: git
         params:
           - name: url
-            value: https://github.com/open-toolchain/hello-containers
+            value: $(params.gitrepositoryurl)
           - name: revision
-            value: master
+            value: $(params.gitrevision)
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
       metadata:
