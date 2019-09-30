@@ -21,8 +21,8 @@ spec:
           tekton.dev/git-0: https://github.com # Described below
       type: kubernetes.io/basic-auth
       stringData:
-        username: xxx
-        password: yyy
+        username: $(params.gitusername)
+        password: $(params.gitpassword)
     - apiVersion: v1
       kind: ServiceAccount
       metadata:
