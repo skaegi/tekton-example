@@ -19,7 +19,8 @@ spec:
             key: apikey
       command: ["/bin/sh", "-c"]
       args:
-        - ibmcloud config --check-version=false;
+        - echo hi;
+          ibmcloud config --check-version=false;
           ibmcloud login --apikey $APIKEY --no-region;
           ibmcloud plugin install container-registry;
           source pre-build-check.sh
