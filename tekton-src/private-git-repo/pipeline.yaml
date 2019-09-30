@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: shell-pipeline
+spec:
+  params:
+    - name: message
+      default: default pipeline message
+  resources:
+    - name: source-repo
+      type: git
+  tasks:
+    - name: shell-with-a-task
+      taskRef:
+        name: shell-task
+      resources:
+        inputs:
+          - name: workspace
+            resource: source-repo

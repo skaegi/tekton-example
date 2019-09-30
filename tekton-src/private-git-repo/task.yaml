@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: shell-task
+spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
+  steps:
+    - name: echo
+      image: ibmcom/ibm-cloud-developer-tools-amd64
+      command: ["/bin/sh", "-c"]
+      args:
+        - echo starting;
+          ls -la;
+          pwd;
+          ls -la workspace;
+          kubectl get all;
+      
