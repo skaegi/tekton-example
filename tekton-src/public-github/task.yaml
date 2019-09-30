@@ -7,7 +7,7 @@ spec:
     resources:
       - name: workspace
         type: git
-        targetPath: ""
+        targetPath: .
   steps:
     - name: echo
       image: ibmcom/ibm-cloud-developer-tools-amd64
