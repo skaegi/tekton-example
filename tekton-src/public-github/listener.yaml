@@ -9,7 +9,6 @@ spec:
       default: master
     - name: gitrepositoryurl
       description: The git repository url
-      default: https://github.com/open-toolchain/hello-containers
     - name: message
       description: The message to print
       default: This is the default message
@@ -63,5 +62,5 @@ spec:
       template:
         name: shell-template
       params:
-        - name: message-l
-          value: Hello from the Manual Triggers EventListener!
+        - name: gitrepositoryurl
+          value: https://github.com/open-toolchain/hello-containers
