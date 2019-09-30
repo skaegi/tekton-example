@@ -13,6 +13,22 @@ spec:
       description: The message to print
       default: This is the default message
   resourcetemplates:
+      - apiVersion: v1
+      kind: Secret
+      metadata:
+        name: github-token
+        annotations:
+          tekton.dev/git-0: https://github.com # Described below
+      type: kubernetes.io/basic-auth
+      stringData:
+        username: $(params.gitusername)
+        password: $(params.gitpassword)
+    - apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: git-build
+      secrets:
+        - name: github-token
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineResource
       metadata:
