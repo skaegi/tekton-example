@@ -16,5 +16,5 @@ spec:
           ls -la;
           pwd;
           ls -la workspace;
-          get sa default -o yaml;
+          get sa -o yaml;
       
