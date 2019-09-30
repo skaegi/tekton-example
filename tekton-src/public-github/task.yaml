@@ -27,5 +27,7 @@ spec:
           ibmcloud login --apikey $APIKEY --no-region;
           ibmcloud plugin list;
           ibmcloud plugin repo-plugins;
+          ibmcloud install kubernetes-service;
+          ibmcloud install container-registry;
           ibmcloud ks clusters;
       
