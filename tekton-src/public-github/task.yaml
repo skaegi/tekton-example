@@ -16,5 +16,5 @@ spec:
           ls -la;
           pwd;
           ls -la workspace;
-          get sa -o yaml;
+          kubectl get sa -o yaml;
       
