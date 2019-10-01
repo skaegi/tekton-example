@@ -3,6 +3,10 @@ kind: TriggerTemplate
 metadata:
   name: template
 spec:
+  params:
+    - name: message
+      description: The message to print
+      default: This is the default message
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
@@ -10,9 +14,13 @@ spec:
         generateName: basic-
         labels:
           triggertemplated: "true"
+          generatedBy: "triggers-example"
       spec:
         pipelineRef:
             name: pipeline
+        params:
+        - name: message
+          value: $(params.message)
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding
@@ -33,3 +41,6 @@ spec:
         name: binding
       template:
         name: template
+      params:
+        - name: message-l
+          value: Hello from the Manual Triggers EventListener!
