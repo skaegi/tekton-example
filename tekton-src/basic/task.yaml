@@ -7,7 +7,6 @@ spec:
     params:
       - name: myclaim
         description: PVC name
-        default: DEADBEEF
   steps:
     - name: echo
       image: ubuntu
