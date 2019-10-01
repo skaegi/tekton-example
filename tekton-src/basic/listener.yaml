@@ -15,10 +15,19 @@ spec:
             name: pipeline
 ---
 apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: binding
+spec:
+  params:
+---
+apiVersion: tekton.dev/v1alpha1
 kind: EventListener
 metadata:
   name: listener
 spec:
   triggers:
-    - template:
+    - binding:
+        name: binding
+      template:
         name: template
