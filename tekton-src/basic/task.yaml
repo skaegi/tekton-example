@@ -3,6 +3,11 @@ kind: Task
 metadata:
   name: task
 spec:
+  inputs:
+    params:
+      - name: myclaim
+        description: PVC name
+        default: DEADBEEF
   steps:
     - name: echo
       image: ubuntu
@@ -13,5 +18,9 @@ spec:
           ls -la;
       volumeMounts:
         - mountPath: /var/run/
-          name: dind-socket
+          name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: $(inputs.params.myclaim)
       
