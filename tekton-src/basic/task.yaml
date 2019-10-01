@@ -11,4 +11,7 @@ spec:
         - echo hello;
           pwd;
           ls -la;
+      volumeMounts:
+        - mountPath: /var/run/
+          name: dind-socket
       
