@@ -11,7 +11,7 @@ spec:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
       metadata:
-        generateName: basic-
+        name: pipelinerun-$(uid)
         labels:
           triggertemplated: "true"
           generatedBy: "triggers-example"
@@ -19,8 +19,8 @@ spec:
         pipelineRef:
             name: pipeline
         params:
-        - name: message
-          value: $(params.message)
+        - name: pvc
+          value: pipelinerun-$(uid)-pvc
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding

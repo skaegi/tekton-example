@@ -3,7 +3,13 @@ kind: Pipeline
 metadata:
   name: pipeline
 spec:
+  params:
+    - name: pvc
+      description: the pipelinerun pvc name
   tasks:
     - name: pipeline-task
       taskRef:
         name: task
+      params:
+        - name: myclaim
+          value: $(params.pvc)
