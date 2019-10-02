@@ -17,9 +17,8 @@ spec:
           value: $(inputs.params.message)
       command: ["/bin/sh", "-c"]
       args:
-        - echo $message > /step-mount/message;
-          ls -la /step-mount;
-          cat /step-mount/message;
+        - ls -la /step-mount;
+          echo $message > /step-mount/message;
       volumeMounts:
         - mountPath: /step-mount
           name: task-volume
