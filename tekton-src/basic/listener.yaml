@@ -3,6 +3,10 @@ kind: TriggerTemplate
 metadata:
   name: template
 spec:
+  params:
+    - name: message
+      description: The message to print
+      default: hello
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
