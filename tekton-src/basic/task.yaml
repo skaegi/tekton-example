@@ -10,7 +10,7 @@ spec:
       - name: message
         description: the message
   steps:
-    - name: message-mount
+    - name: message-mount-write
       image: alpine
       env:
         - name: message
@@ -37,7 +37,7 @@ spec:
       - name: task-pvc
         description: the task pvc
   steps:
-    - name: message-mount
+    - name: message-mount-read
       image: alpine
       command: ["/bin/sh", "-c"]
       args:
