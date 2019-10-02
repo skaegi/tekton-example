@@ -18,6 +18,8 @@ spec:
         params:
         - name: pipeline-pvc
           value: pipelinerun-$(uid)-pvc
+        - name: message
+          value: $(params.message)
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding

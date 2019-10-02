@@ -7,14 +7,19 @@ spec:
     params:
       - name: task-pvc
         description: the task pvc
+      - name: message
+        description: the message
   steps:
-    - name: hello
+    - name: message-mount
       image: ubuntu
+      env:
+        - name: message
+          value: $(params.message)
       command: ["/bin/sh", "-c"]
       args:
-        - echo hello > /step-mount/hello
+        - echo $message > /step-mount/message;
           ls -la /step-mount;
-          cat /step-mount/hello;
+          cat /step-mount/message;
       volumeMounts:
         - mountPath: /step-mount
           name: task-volume
