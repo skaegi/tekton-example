@@ -11,7 +11,7 @@ spec:
         description: the message
   steps:
     - name: message-mount
-      image: ubuntu
+      image: alpine
       env:
         - name: message
           value: $(inputs.params.message)
@@ -38,7 +38,7 @@ spec:
         description: the task pvc
   steps:
     - name: message-mount
-      image: ubuntu
+      image: alpine
       command: ["/bin/sh", "-c"]
       args:
         - ls -la /step-mount;
