@@ -13,10 +13,10 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - echo hello > /step-mount/hello
-          ls -la /step-volume;
-          cat /step-voluem/hello;
+          ls -la /step-mount;
+          cat /step-mount/hello;
       volumeMounts:
-        - mountPath: /mount
+        - mountPath: /step-mount
           name: task-volume
   volumes:
     - name: task-volume
