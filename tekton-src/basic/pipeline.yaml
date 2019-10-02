@@ -4,12 +4,12 @@ metadata:
   name: pipeline
 spec:
   params:
-    - name: pvc
-      description: the pipelinerun pvc name
+    - name: pipeline-pvc
+      description: the pipeline pvc name
   tasks:
     - name: pipeline-task
       taskRef:
         name: task
       params:
-        - name: myclaim
-          value: $(params.pvc)
+        - name: task-pvc
+          value: $(params.pipeline-pvc)

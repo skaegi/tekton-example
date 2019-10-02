@@ -5,21 +5,21 @@ metadata:
 spec:
   inputs:
     params:
-      - name: myclaim
-        description: PVC name
+      - name: task-pvc
+        description: the task pvc
   steps:
-    - name: echo
+    - name: hello
       image: ubuntu
       command: ["/bin/sh", "-c"]
       args:
-        - echo hello;
-          pwd;
-          ls -la;
+        - echo hello > /step-mount/hello
+          ls -la /step-volume;
+          cat /step-voluem/hello;
       volumeMounts:
-        - mountPath: /var/run/
-          name: mypd
+        - mountPath: /mount
+          name: task-volume
   volumes:
-    - name: mypd
+    - name: task-volume
       persistentVolumeClaim:
-        claimName: $(inputs.params.myclaim)
+        claimName: $(inputs.params.task-pvc)
       

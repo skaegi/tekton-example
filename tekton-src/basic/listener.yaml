@@ -3,10 +3,6 @@ kind: TriggerTemplate
 metadata:
   name: template
 spec:
-  params:
-    - name: message
-      description: The message to print
-      default: This is the default message
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
@@ -16,7 +12,7 @@ spec:
         pipelineRef:
             name: pipeline
         params:
-        - name: pvc
+        - name: pipeline-pvc
           value: pipelinerun-$(uid)-pvc
 ---
 apiVersion: tekton.dev/v1alpha1
